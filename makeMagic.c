@@ -56,7 +56,6 @@ void printSquare(int **square, int size, FILE *squareFile)
             }
         }
         fprintf(squareFile, "\n");
-        printf("\n");
     }
 }
 void fillRecur(int **square, int size, int n, int i, int j)
@@ -180,10 +179,6 @@ MSquare *generateMSquare(int n)
         {
             printf("Memory not allocated.\n");
             exit(1);
-        }
-        else
-        {
-            printf("square: %d\n ", *(*(square + i)));
         }
     }
 
