@@ -36,9 +36,16 @@ typedef struct
     int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
-void printSquare(int **square)
+void printSquare(int **square, int size)
 {
-    printf("%d,%d,%d\n%d,%d,%d\n%d,%d,%d\n", *(*(square)), *(*(square) + 1), *(*(square) + 2), *(*(square + 1)), *(*(square + 1) + 1), *(*(square + 1) + 2), *(*(square + 2)), *(*(square + 2) + 1), *(*(square + 2) + 2));
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            printf("%d,", *(*(square + i) + j));
+        }
+        printf("\n");
+    }
 }
 void fillRecur(int **square, int size, int n, int i, int j)
 {
