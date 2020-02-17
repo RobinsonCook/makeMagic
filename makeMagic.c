@@ -4,14 +4,14 @@
 // Posting or sharing this file is prohibited, including any changes/additions.
 //
 ////////////////////////////////////////////////////////////////////////////////
-// Main File:        (name of file with main function)
-// This File:        (name of this file)
+// Main File:       n_in_a_row.c
+// This File:        n_in_a_row.c
 // Other Files:      (name of all other files if any)
 // Semester:         CS 354 Spring 2020
 //
-// Author:           (your name)
-// Email:            (your wisc email address)
-// CS Login:         (your CS login name)
+// Author:           Robinson Cook
+// Email:            rcook5@wisc.edu
+// CS Login:         robinson
 //
 /////////////////////////// OTHER SOURCES OF HELP //////////////////////////////
 //                   Fully acknowledge and credit all sources of help,
@@ -24,7 +24,6 @@
 //                   search, be sure to include Web URLs and description of
 //                   of any information you find.
 ////////////////////////////////////////////////////////////////////////////////
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
