@@ -102,7 +102,7 @@ void fill(int **board)
     int i = 0;
     //get the middle of the board
     int j = sizeof(board) / 2;
-    printf("%d", j);
+    printf("%d:%d:%d", j, i, n);
 }
 
 /* TODO:  
