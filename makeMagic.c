@@ -46,7 +46,7 @@ int getSize()
     printf("Enter magic square's size (odd integer >=3)");
     char buffer[5];
     fgets(buffer, 5, stdin);
-    printf("input was: %c\n", buffer);
+    printf("input was: %s\n", buffer);
 
     return 0;
 }
