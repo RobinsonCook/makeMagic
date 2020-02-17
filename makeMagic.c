@@ -40,7 +40,7 @@ void printSquare(int **square, int size, FILE *squareFile)
 {
     //print the size to the file
     fprintf(squareFile, "%d\n", size);
-    printf("%d\n", size);
+
     //start printing rows
     for (int i = 0; i < size; i++)
     {
@@ -49,12 +49,12 @@ void printSquare(int **square, int size, FILE *squareFile)
             if (j != size - 1)
             {
                 fprintf(squareFile, "%d,", *(*(square + i) + j));
-                printf("%d,", *(*(square + i) + j));
+           
             }
             else
             {
                 fprintf(squareFile, "%d", *(*(square + i) + j));
-                printf("%d", *(*(square + i) + j));
+      
             }
         }
         fprintf(squareFile, "\n");
@@ -66,10 +66,10 @@ void fillRecur(int **square, int size, int n, int i, int j)
     n++;
     if (n > size * size)
     {
-        printf("done\n");
+ 
         return;
     }
-    printf("found empty spot, filling now\n");
+
     *(*(square + i) + j) = n;
 
     int iNE = j;
@@ -79,7 +79,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
     //set y coordinate
     if (i == 0)
     {
-        printf("wrapping around\n");
+   
         iNE = size - 1;
     }
     else
@@ -89,7 +89,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
     //set x coordinate
     if (j == size - 1)
     {
-        printf("wrapping around\n");
+
         jNE = 0;
     }
     else
@@ -108,7 +108,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
         //see if i needs to wrap
         if (i == size - 1)
         {
-            printf("wrapping around");
+   
             iB = 0;
         }
         else
