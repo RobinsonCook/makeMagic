@@ -39,14 +39,14 @@ typedef struct
 void printSquare(int **square, int size, FILE *squareFile)
 {
     //print the size to the file
-    fprintf(squareFile, "%d", size);
-    printf("%d", size);
+    fprintf(squareFile, "%d\n", size);
+    printf("%d\n", size);
     //start printing rows
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
-            if (j != size)
+            if (j != size - 1)
             {
                 fprintf(squareFile, "%d,", *(*(square + i) + j));
                 printf("%d,", *(*(square + i) + j));
