@@ -45,6 +45,8 @@ void fillRecur(int **board, int size, int n, int i, int j)
         printf("done");
         exit(1);
     }
+    printf("found empty spot, filling now\n");
+    *(*(board + i) + j) = n;
     int iNE = j;
     int jNE = i;
     int iB = i;
@@ -69,14 +71,16 @@ void fillRecur(int **board, int size, int n, int i, int j)
     {
         jNE = j + 1;
     }
-    if (*(*(board + i) + j) == 0)
+    //see if the NE is clear
+    if (*(*(board + iNE) + jNE) == 0)
     {
-        printf("found empty spot, filling now\n");
-        *(*(board + i) + j) = n;
+        //recursively fill in the NE
         fillRecur(board, size, n, iNE, jNE);
     }
+    //if the NE isnt clear
     else
     {
+        //see if i needs to wrap
         if (i == size - 1)
         {
             printf("wrapping around");
@@ -86,7 +90,6 @@ void fillRecur(int **board, int size, int n, int i, int j)
         {
             iB = i + 1;
         }
-        printf("found empty spot, filling now\n");
         fillRecur(board, size, n, iB, j);
     }
 }
