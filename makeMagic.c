@@ -90,7 +90,7 @@ MSquare *generateMSquare(int n)
             exit(1);
         }
     }
-    MSquare Square = {n, **square};
+    MSquare Square = {n, square};
     MSquare *squarePtr = &Square;
     printf("data: %d", squarePtr->size);
 
