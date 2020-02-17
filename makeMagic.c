@@ -92,7 +92,7 @@ MSquare *generateMSquare(int n)
     }
     struct MSquare *squareStruct =
         {
-            n,
+            (int)n,
             square};
     return squareStruct;
 }
