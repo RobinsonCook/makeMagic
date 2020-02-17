@@ -38,7 +38,7 @@ typedef struct
 } MSquare;
 void printSquare(int **square)
 {
-    printf("%d,%d,%d\n%d,%d,%d\n%d,%d,%d\n", *(*(square)), *(*(square + 1)), *(*(square + 2)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)));
+    printf("%d,%d,%d\n%d,%d,%d\n%d,%d,%d\n", *(*(square)), *(*(square) + 1), *(*(square) + 2), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)));
 }
 void fillRecur(int **square, int size, int n, int i, int j)
 {
