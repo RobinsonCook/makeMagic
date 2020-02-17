@@ -90,9 +90,12 @@ MSquare *generateMSquare(int n)
             exit(1);
         }
     }
+    //create the square struct
     MSquare Square = {n, square};
+    //get a pointer to the square struct
     MSquare *squarePtr = &Square;
-
+    //fill the board with numbers
+    fill(squarePtr->msquare);
     return squarePtr;
 }
 void fill(int **board)
