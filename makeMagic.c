@@ -43,7 +43,7 @@ void fill(int **board, int size)
     //start with the first row
     int i = 0;
     //get the middle of the board
-    int k = floor(size / 2);
+    div_t k = div(size, 2);
     printf("%d:%d:%d", k, i, n);
 }
 /* TODO:
