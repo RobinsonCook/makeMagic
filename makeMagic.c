@@ -62,7 +62,7 @@ int getSize()
         printf("Size must be odd.\n");
         exit(1);
     }
-    return 0;
+    return number;
 }
 
 /* TODO:
@@ -122,10 +122,9 @@ int main(int argc, char *argv[])
         exit(1);
     }
     // TODO: Get magin square's size from user
-    getSize();
+    int size = getSize();
     // TODO: Generate the magic square
-
+    generateMSquare(size);
     // TODO: Output the magic square
-
     return 0;
 }
