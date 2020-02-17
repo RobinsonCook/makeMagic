@@ -36,14 +36,28 @@ typedef struct
     int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
-void printSquare(int **square, int size)
+void printSquare(int **square, int size, FILE *squareFile)
 {
+    //print the size to the file
+    fprintf(squareFile, "%d", size);
+    printf("%d", size);
+    //start printing rows
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
-            printf("%d,", *(*(square + i) + j));
+            if (j != size)
+            {
+                fprintf(squareFile, "%d,", *(*(square + i) + j));
+                printf("%d,", *(*(square + i) + j));
+            }
+            else
+            {
+                fprintf(squareFile, "%d", *(*(square + i) + j));
+                printf("%d", *(*(square + i) + j));
+            }
         }
+        fprintf(squareFile, "\n");
         printf("\n");
     }
 }
@@ -58,7 +72,6 @@ void fillRecur(int **square, int size, int n, int i, int j)
     printf("found empty spot, filling now\n");
     *(*(square + i) + j) = n;
 
-    printSquare(square,size);
     int iNE = j;
     int jNE = i;
     int iB = i;
@@ -195,6 +208,11 @@ MSquare *generateMSquare(int n)
  */
 void outputMSquare(MSquare *msquare, char *filename)
 {
+    //open the file
+    FILE *squareFile = fopen(filename, "w");
+    //write square to the file
+    printSquare(msquare->msquare, msquare->size, squareFile);
+    //close the file
 }
 
 /* TODO:
