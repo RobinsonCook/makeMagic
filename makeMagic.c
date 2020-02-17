@@ -92,9 +92,17 @@ MSquare *generateMSquare(int n)
     }
     MSquare Square = {n, square};
     MSquare *squarePtr = &Square;
-    printf("data: %d", squarePtr->size);
 
     return squarePtr;
+}
+void fill(int **board)
+{ //start with 1
+    int n = 1;
+    //start with the first row
+    int i = 0;
+    //get the middle of the board
+    int j = sizeof(board) / 2;
+    printf("%d", j);
 }
 
 /* TODO:  
