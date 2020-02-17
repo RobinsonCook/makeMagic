@@ -36,7 +36,9 @@ typedef struct
     int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
-
+void fillRecur(int **board, int size, int n, int i, int j)
+{
+}
 void fill(int **board, int size)
 { //start with 1
     int n = 1;
@@ -50,10 +52,7 @@ void fill(int **board, int size)
     //fill the next cell in the board
     fillRecur(board, size, n, i, k);
 }
-void fillRecur(int **board, int size, int n, int i, int j)
-{
- 
-}
+
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
  * checks if it's an odd number >= 3 (if not display the required
