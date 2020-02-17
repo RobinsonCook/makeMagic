@@ -207,11 +207,12 @@ int main(int argc, char *argv[])
     int size = getSize();
     // TODO: Generate the magic square
     MSquare *msquare = generateMSquare(size);
+    int **board = msquare->msquare;
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
-            int **board = msquare->msquare;
+
             printf("%d", *(*(board + i) + j));
         }
     }
