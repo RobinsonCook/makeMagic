@@ -40,9 +40,9 @@ typedef struct
 void fillRecur(int **board, int size, int n, int i, int j)
 {
     n++;
-    if (n > size)
+    if (n > size * size)
     {
-        printf("done");
+        printf("done\n");
         exit(1);
     }
     printf("found empty spot, filling now\n");
@@ -90,6 +90,7 @@ void fillRecur(int **board, int size, int n, int i, int j)
         {
             iB = i + 1;
         }
+
         fillRecur(board, size, n, iB, j);
     }
 }
@@ -162,7 +163,7 @@ MSquare *generateMSquare(int n)
         }
         else
         {
-            printf("square: %d", *(*(square + i)));
+            printf("square: %d\n ", *(*(square + i)));
         }
     }
     //create the square struct
