@@ -36,61 +36,90 @@ typedef struct
     int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
+/**
+ * print to the file
+ * @param square the square being printed to
+ * @param size the size of the square
+ * @param squareFile the file being written to
+*/
 void printSquare(int **square, int size, FILE *squareFile)
 {
     //print the size to the file
     fprintf(squareFile, "%d\n", size);
 
-    //start printing rows
+    //iterate through rows
     for (int i = 0; i < size; i++)
     {
+        //iterate through row indices
         for (int j = 0; j < size; j++)
         {
+            //see if not end of row
             if (j != size - 1)
             {
+                //print with a comma
                 fprintf(squareFile, "%d,", *(*(square + i) + j));
             }
+            //if end of row
             else
             {
+                //print without a comma
                 fprintf(squareFile, "%d", *(*(square + i) + j));
             }
         }
+        //print a new line
         fprintf(squareFile, "\n");
     }
 }
+/**
+ * recursively fill the square
+ * @param square the square you are filling
+ * @param size the size of the square
+ * @param n the number that was filled last
+ * @param i the row being filled
+ * @param j the column being filled
+ * 
+*/
 void fillRecur(int **square, int size, int n, int i, int j)
 {
+    //incriment the number that is going to fill in
     n++;
+    //see if the program has filled in all squares
     if (n > size * size)
     {
-
+        //stop filling
         return;
     }
-
+    //fill in the square
     *(*(square + i) + j) = n;
-
+    //set the NE and below to the current indices
     int iNE = j;
     int jNE = i;
     int iB = i;
 
     //set y coordinate
+    //see if on the top row
     if (i == 0)
     {
-
+        //wrap around to the bottom row
         iNE = size - 1;
     }
+    //if not on the top row
     else
     {
+        //set next i to be up one row
         iNE = i - 1;
     }
     //set x coordinate
+    //see if on the rightmost side
     if (j == size - 1)
     {
-
+        //wrap around to the left side
         jNE = 0;
     }
+    //if not on the rightmost side
     else
     {
+        //set next j to be one to the right
         jNE = j + 1;
     }
     //see if the NE is clear
@@ -101,21 +130,28 @@ void fillRecur(int **square, int size, int n, int i, int j)
     }
     //if the NE isnt clear
     else
-    {
-        //see if i needs to wrap
+    { //handle below coordinate
+        //see if i is the bottom row
         if (i == size - 1)
         {
-
+            //wrap around to the top row
             iB = 0;
         }
+        //if i isn't at the bottom row
         else
         {
+            //the next i will be one below the current i
             iB = i + 1;
         }
-
+        //recursively fill in the square below
         fillRecur(square, size, n, iB, j);
     }
 }
+/**
+ * start filling the square
+ * @param square the square you are filling
+ * @param size the size of the square
+*/
 void fill(int **square, int size)
 { //start with 1
     int n = 0;
@@ -146,6 +182,7 @@ int getSize()
     fgets(buffer, 6, stdin);
     //parse the integer from the buffer
     int number = atoi(buffer);
+
     //make sure size is greater than 3
     if (number < 3)
     {
@@ -170,13 +207,16 @@ int getSize()
 MSquare *generateMSquare(int n)
 {
     //TODO: Dynamically allocate a 2D array of dimensions retrieved above.
+    //the magic square being filled in
     int **square;
+    //allocate memory to hold rows
     square = malloc(n * sizeof(int *));
     if (square == NULL)
     {
         printf("Memory not allocated.\n");
         exit(1);
     }
+    //allocate memory for each row
     for (int i = 0; i < n; i++)
     {
         *(square + i) = malloc(n * sizeof(int));
@@ -208,9 +248,19 @@ void outputMSquare(MSquare *msquare, char *filename)
 {
     //open the file
     FILE *squareFile = fopen(filename, "w");
+    if (squareFile == NULL)
+    {
+        printf("file not opened\b");
+        exit(1);
+    }
     //write square to the file
     printSquare(msquare->msquare, msquare->size, squareFile);
     //close the file
+    if (fclose(squareFile) != 0)
+    {
+        printf("Error while closing the file.\n");
+        exit(1);
+    }
 }
 
 /* TODO:
@@ -231,8 +281,16 @@ int main(int argc, char *argv[])
     int size = getSize();
     // TODO: Generate the magic square
     MSquare *msquare = generateMSquare(size);
-    outputMSquare(msquare, *(argv + 1));
-
     // TODO: Output the magic square
+    outputMSquare(msquare, *(argv + 1));
+    //free memory
+
+    int **square = msquare->msquare;
+    for (int i = 0; i < size; i++)
+    {
+        free(*(square + i));
+    }
+    free(square);
+    free(msquare);
     return 0;
 }
