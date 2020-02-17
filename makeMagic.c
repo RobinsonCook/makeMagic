@@ -38,7 +38,7 @@ typedef struct
 } MSquare;
 
 void fillRecur(int **square, int size, int n, int i, int j)
-{
+{ 
     n++;
     if (n > size * size)
     {
@@ -47,8 +47,8 @@ void fillRecur(int **square, int size, int n, int i, int j)
     }
     printf("found empty spot, filling now\n");
     *(*(square + i) + j) = n;
-    printf("%d", *(*(square + i) + j));
-
+   
+ printSquare(square);
     int iNE = j;
     int jNE = i;
     int iB = i;
