@@ -206,7 +206,16 @@ int main(int argc, char *argv[])
     // TODO: Get magin square's size from user
     int size = getSize();
     // TODO: Generate the magic square
-    generateMSquare(size);
+    MSquare *msquare = generateMSquare(size);
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            int **board = msquare->msquare;
+            printf("%d", *(*(board + i) + j));
+        }
+    }
+
     // TODO: Output the magic square
     return 0;
 }
