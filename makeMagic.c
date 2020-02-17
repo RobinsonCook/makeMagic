@@ -228,12 +228,12 @@ int main(int argc, char *argv[])
         printf("Usage: ./makeMagic <output_filename>\n");
         exit(1);
     }
-    char filename[100] = *(argv + 1);
+
     // TODO: Get magin square's size from user
     int size = getSize();
     // TODO: Generate the magic square
     MSquare *msquare = generateMSquare(size);
-    outputMSquare(msquare, filename);
+    outputMSquare(msquare, *(argv + 1));
 
     // TODO: Output the magic square
     return 0;
