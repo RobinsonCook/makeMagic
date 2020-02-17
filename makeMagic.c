@@ -107,10 +107,14 @@ void fill(int **square, int size)
     printf("found empty spot, filling now\n");
     *(*(square + i) + j) = n;
     printf("%d", *(*(square + i) + j));
+    printSquare(square);
     //fill the next cell in the square
     fillRecur(square, size, n, i, j);
 }
-
+void printSquare(int **square)
+{
+    printf("%d,%d,%d\n%d,%d,%d\n%d,%d,%d\n", *(*(square)), *(*(square + 1)), *(*(square + 2)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)));
+}
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
  * checks if it's an odd number >= 3 (if not display the required
