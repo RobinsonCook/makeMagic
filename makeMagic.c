@@ -44,11 +44,24 @@ typedef struct
 int getSize()
 {
     printf("Enter magic square's size (odd integer >=3)\n");
+    //create array to hold input
     char buffer[6];
+    //get user input
     fgets(buffer, 6, stdin);
+    //parse the integer from the buffer
     int number = atoi(buffer);
-    printf("input was: %d\n", number);
-
+    //make sure size is greater than 3
+    if (number < 3)
+    {
+        printf("Size must be >= 3.\n");
+        exit(1);
+    }
+    //make sure size is even
+    if (number % 2 != 1)
+    {
+        printf("Size must be odd.\n");
+        exit(1);
+    }
     return 0;
 }
 
@@ -81,9 +94,20 @@ void outputMSquare(MSquare *msquare, char *filename)
 int main(int argc, char *argv[])
 {
     // TODO: Check input arguments to get output filename
-    getSize();
+    //make sure the correct number of arguments are entered
+    if (argc != 2)
+    {
+        printf("Usage: ./makeMagic <output_filename>\n");
+        exit(1);
+    }
+    //make sure the input is a filename
+    if (!argv.Contains(".txt"))
+    {
+        printf("Usage: ./makeMagic <output_filename>");
+        exit(1);
+    }
     // TODO: Get magin square's size from user
-
+    getSize();
     // TODO: Generate the magic square
 
     // TODO: Output the magic square
