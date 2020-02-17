@@ -289,7 +289,7 @@ int main(int argc, char *argv[])
     {
         free(*(square + i));
     }
-    free(*square);
-    free(msquare);
+    free(square);
+
     return 0;
 }
