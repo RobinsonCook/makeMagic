@@ -36,8 +36,57 @@ typedef struct
     int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
+
 void fillRecur(int **board, int size, int n, int i, int j)
 {
+    n++;
+    if(n>size){
+        printf("done");
+        exit(1);
+    }
+    int iNE = j;
+    int jNE = i;
+    int iB = i;
+
+    //set y coordinate
+    if (i == 0)
+    {
+        printf("wrapping around\n");
+        iNE = size - 1;
+    }
+    else
+    {
+        iNE = i - 1;
+    }
+    //set x coordinate
+    if (j == size - 1)
+    {
+        printf("wrapping around\n");
+        jNE = 0;
+    }
+    else
+    {
+        jNE = j + 1;
+    }
+    if (*(*(board + i) + j) == 0)
+    {
+        printf("found empty spot, filling now\n");
+        *(*(board + i) + j) = n;
+        fillRecur(board, size, n, iNE, jNE);
+    }
+    else
+    {
+        if (i == size - 1)
+        {
+            printf("wrapping around");
+            iB = 0;
+        }
+        else
+        {
+            iB = i + 1;
+        }
+        fillRecur(board, size, n, iB, j);
+    }
 }
 void fill(int **board, int size)
 { //start with 1
@@ -45,12 +94,12 @@ void fill(int **board, int size)
     //start with the first row
     int i = 0;
     //get the middle of the board
-    int k = size / 2;
-    printf("%i:%i:%d:%d\n", size, k, i, n);
+    int j = size / 2;
+
     //set top middle to one
-    *(*(board + i) + k) = n;
+    *(*(board + i) + j) = n;
     //fill the next cell in the board
-    fillRecur(board, size, n, i, k);
+    fillRecur(board, size, n, i, j);
 }
 
 /* TODO:
