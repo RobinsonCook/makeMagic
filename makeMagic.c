@@ -90,11 +90,11 @@ MSquare *generateMSquare(int n)
             exit(1);
         }
     }
-    struct MSquare *squareStruct =
-        {
-            n,
-            **square};
-    return squareStruct;
+    MSquare Square = {n, **square};
+    MSquare *squarePtr = &Square;
+    printf("data: %d", squarePtr->size);
+
+    return squarePtr;
 }
 
 /* TODO:  
