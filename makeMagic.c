@@ -43,10 +43,11 @@ typedef struct
  */
 int getSize()
 {
-    printf("Enter magic square's size (odd integer >=3)");
-    char buffer[5];
-    fgets(buffer, 5, stdin);
-    printf("input was: %s\n", buffer);
+    printf("Enter magic square's size (odd integer >=3)\n");
+    char buffer[6];
+    fgets(buffer, 6, stdin);
+    int number = (int)buffer;
+    printf("input was: %d\n", number);
 
     return 0;
 }
