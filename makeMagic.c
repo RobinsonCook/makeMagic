@@ -47,6 +47,8 @@ void fillRecur(int **board, int size, int n, int i, int j)
     }
     printf("found empty spot, filling now\n");
     *(*(board + i) + j) = n;
+                printf("%d", *(*(square + i) + j));
+
     int iNE = j;
     int jNE = i;
     int iB = i;
@@ -173,13 +175,7 @@ MSquare *generateMSquare(int n)
     MSquare *squarePtr = &Square;
     //fill the board with numbers
     fill(squarePtr->msquare, squarePtr->size);
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            printf("%d", *(*(square + i) + j));
-        } /* code */
-    }
+
 
     return squarePtr;
 }
