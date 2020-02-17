@@ -79,7 +79,7 @@ void outputMSquare(MSquare *msquare, char *filename)
 int main(int argc, char *argv[])
 {
     // TODO: Check input arguments to get output filename
-
+    getSize();
     // TODO: Get magin square's size from user
 
     // TODO: Generate the magic square
