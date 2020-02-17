@@ -36,9 +36,12 @@ typedef struct
     int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
-
+void printSquare(int **square)
+{
+    printf("%d,%d,%d\n%d,%d,%d\n%d,%d,%d\n", *(*(square)), *(*(square + 1)), *(*(square + 2)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)));
+}
 void fillRecur(int **square, int size, int n, int i, int j)
-{ 
+{
     n++;
     if (n > size * size)
     {
@@ -47,8 +50,8 @@ void fillRecur(int **square, int size, int n, int i, int j)
     }
     printf("found empty spot, filling now\n");
     *(*(square + i) + j) = n;
-   
- printSquare(square);
+
+    printSquare(square);
     int iNE = j;
     int jNE = i;
     int iB = i;
@@ -111,10 +114,7 @@ void fill(int **square, int size)
     //fill the next cell in the square
     fillRecur(square, size, n, i, j);
 }
-void printSquare(int **square)
-{
-    printf("%d,%d,%d\n%d,%d,%d\n%d,%d,%d\n", *(*(square)), *(*(square + 1)), *(*(square + 2)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)), *(*(square)));
-}
+
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
  * checks if it's an odd number >= 3 (if not display the required
