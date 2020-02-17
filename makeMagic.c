@@ -42,9 +42,8 @@ void fill(int **board, int size)
     //start with the first row
     int i = 0;
     //get the middle of the board
-    int j = sizeof(board);
-    int k = size;
-    printf("%d:%d:%d:%d", j, i, n, k);
+    int k = size / 2;
+    printf("%d", k)
 }
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
