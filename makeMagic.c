@@ -52,9 +52,7 @@ void fill(int **board, int size)
 }
 void fillRecur(int **board, int size, int n, int i, int j)
 {
-    if (*(*(board + i) + j) == NULL)
-    {
-    }
+ 
 }
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
@@ -111,7 +109,7 @@ MSquare *generateMSquare(int n)
         }
         else
         {
-            printf("square: %d", *(square + i));
+            printf("square: %n", *(square + i));
         }
     }
     //create the square struct
