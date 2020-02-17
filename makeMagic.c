@@ -45,6 +45,16 @@ void fill(int **board, int size)
     //get the middle of the board
     int k = size / 2;
     printf("%i:%i:%d:%d\n", size, k, i, n);
+    //set top middle to one
+    *(*(board + i) + k) = n;
+    //fill the next cell in the board
+    fillRecur(board, size, n, i, k);
+}
+void fillRecur(int **board, int size, int n, int i, int j)
+{
+    if (*(*(board + i) + j) == NULL)
+    {
+    }
 }
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
@@ -98,6 +108,10 @@ MSquare *generateMSquare(int n)
         {
             printf("Memory not allocated.\n");
             exit(1);
+        }
+        else
+        {
+            printf("square: %d", *(square + i));
         }
     }
     //create the square struct
