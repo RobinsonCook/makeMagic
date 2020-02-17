@@ -37,7 +37,7 @@ typedef struct
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
 
-void fillRecur(int **board, int size, int n, int i, int j)
+void fillRecur(int **square, int size, int n, int i, int j)
 {
     n++;
     if (n > size * size)
@@ -46,8 +46,8 @@ void fillRecur(int **board, int size, int n, int i, int j)
         exit(1);
     }
     printf("found empty spot, filling now\n");
-    *(*(board + i) + j) = n;
-                printf("%d", *(*(square + i) + j));
+    *(*(square + i) + j) = n;
+    printf("%d", *(*(square + i) + j));
 
     int iNE = j;
     int jNE = i;
@@ -74,10 +74,10 @@ void fillRecur(int **board, int size, int n, int i, int j)
         jNE = j + 1;
     }
     //see if the NE is clear
-    if (*(*(board + iNE) + jNE) == 0)
+    if (*(*(square + iNE) + jNE) == 0)
     {
         //recursively fill in the NE
-        fillRecur(board, size, n, iNE, jNE);
+        fillRecur(square, size, n, iNE, jNE);
     }
     //if the NE isnt clear
     else
@@ -93,21 +93,21 @@ void fillRecur(int **board, int size, int n, int i, int j)
             iB = i + 1;
         }
 
-        fillRecur(board, size, n, iB, j);
+        fillRecur(square, size, n, iB, j);
     }
 }
-void fill(int **board, int size)
+void fill(int **square, int size)
 { //start with 1
     int n = 1;
     //start with the first row
     int i = 0;
-    //get the middle of the board
+    //get the middle of the square
     int j = size / 2;
 
     //set top middle to one
-    *(*(board + i) + j) = n;
-    //fill the next cell in the board
-    fillRecur(board, size, n, i, j);
+    *(*(square + i) + j) = n;
+    //fill the next cell in the square
+    fillRecur(square, size, n, i, j);
 }
 
 /* TODO:
@@ -173,9 +173,8 @@ MSquare *generateMSquare(int n)
     MSquare Square = {n, square};
     //get a pointer to the square struct
     MSquare *squarePtr = &Square;
-    //fill the board with numbers
+    //fill the square with numbers
     fill(squarePtr->msquare, squarePtr->size);
-
 
     return squarePtr;
 }
