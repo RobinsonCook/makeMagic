@@ -24,14 +24,15 @@
 //                   search, be sure to include Web URLs and description of
 //                   of any information you find.
 ////////////////////////////////////////////////////////////////////////////////
-   
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 // Structure that represents a magic square
-typedef struct {
-    int size;     // dimension of the square
+typedef struct
+{
+    int size;      // dimension of the square
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
 
@@ -40,19 +41,25 @@ typedef struct {
  * checks if it's an odd number >= 3 (if not display the required
  * error message and exit), and returns the valid number.
  */
-int getSize() {
-    return 0;   
-} 
-   
+int getSize()
+{
+    char buffer[5];
+    fgets(buffer, 5, stdin);
+    printf("input was: %n\n", buffer)
+
+        return 0;
+}
+
 /* TODO:
  * Makes a magic square of size n using the Siamese algorithm
  * and returns a pointer to the completed MSquare struct.
  *
  * n the number of rosw and columns
  */
-MSquare *generateMSquare(int n) {
-    return NULL;    
-} 
+MSquare *generateMSquare(int n)
+{
+    return NULL;
+}
 
 /* TODO:  
  * Opens a new file (or overwrites the existing file)
@@ -61,14 +68,16 @@ MSquare *generateMSquare(int n) {
  * msquare the magic square to output
  * filename the name of the output file
  */
-void outputMSquare(MSquare *msquare, char *filename) {
+void outputMSquare(MSquare *msquare, char *filename)
+{
 }
 
 /* TODO:
  * Generates a magic square of the user specified size and
  * output the quare to the output filename
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     // TODO: Check input arguments to get output filename
 
     // TODO: Get magin square's size from user
@@ -78,7 +87,4 @@ int main(int argc, char *argv[]) {
     // TODO: Output the magic square
 
     return 0;
-} 
-
-
-   
+}
