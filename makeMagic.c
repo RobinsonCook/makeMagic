@@ -36,14 +36,15 @@ typedef struct
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
 
-void fill(int **board)
+void fill(int **board, int size)
 { //start with 1
     int n = 1;
     //start with the first row
     int i = 0;
     //get the middle of the board
-    int j = sizeof(board) / 2;
-    printf("%d:%d:%d", j, i, n);
+    int j = sizeof(board);
+    int k = size;
+    printf("%d:%d:%d:%d", j, i, n, k);
 }
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
@@ -104,7 +105,7 @@ MSquare *generateMSquare(int n)
     //get a pointer to the square struct
     MSquare *squarePtr = &Square;
     //fill the board with numbers
-    fill(squarePtr->msquare);
+    fill(squarePtr->msquare, squarePtr->size);
     return squarePtr;
 }
 
