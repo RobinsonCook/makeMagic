@@ -135,8 +135,13 @@ void fill(int **square, int size)
 int getSize()
 {
     printf("Enter magic square's size (odd integer >=3)\n");
-    //create array to hold input
-    char buffer[6];
+    //array to hold input
+    char *buffer = malloc(6 * sizeof(char));
+    if (buffer == NULL)
+    {
+        printf("Memory not allocated.\n");
+        exit(1);
+    }
     //get user input
     fgets(buffer, 6, stdin);
     //parse the integer from the buffer
