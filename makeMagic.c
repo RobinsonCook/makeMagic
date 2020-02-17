@@ -45,9 +45,9 @@ int getSize()
 {
     char buffer[5];
     fgets(buffer, 5, stdin);
-    printf("input was: %n\n", buffer)
+    printf("input was: %n\n", buffer);
 
-        return 0;
+    return 0;
 }
 
 /* TODO:
