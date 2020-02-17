@@ -166,12 +166,21 @@ MSquare *generateMSquare(int n)
             printf("square: %d\n ", *(*(square + i)));
         }
     }
+
     //create the square struct
     MSquare Square = {n, square};
     //get a pointer to the square struct
     MSquare *squarePtr = &Square;
     //fill the board with numbers
     fill(squarePtr->msquare, squarePtr->size);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            *(*(square + i) + j);
+        } /* code */
+    }
+
     return squarePtr;
 }
 
