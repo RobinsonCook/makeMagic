@@ -108,7 +108,7 @@ MSquare *generateMSquare(int n)
         }
         else
         {
-            printf("square: %n", *(square + i));
+            printf("square: %n", *(*(square + i)));
         }
     }
     //create the square struct
