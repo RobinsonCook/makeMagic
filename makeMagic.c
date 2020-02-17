@@ -73,7 +73,28 @@ int getSize()
  */
 MSquare *generateMSquare(int n)
 {
-    return NULL;
+    //TODO: Dynamically allocate a 2D array of dimensions retrieved above.
+    int **square;
+    square = malloc(n * sizeof(int *));
+    if (square == NULL)
+    {
+        printf("Memory not allocated.\n");
+        exit(1);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        *(square + i) = malloc(n * sizeof(int));
+        if (*(square + i) == NULL)
+        {
+            printf("Memory not allocated.\n");
+            exit(1);
+        }
+    }
+    struct MSquare *squareStruct =
+        {
+            n,
+            square};
+    return squareStruct;
 }
 
 /* TODO:  
@@ -98,12 +119,6 @@ int main(int argc, char *argv[])
     if (argc != 2)
     {
         printf("Usage: ./makeMagic <output_filename>\n");
-        exit(1);
-    }
-    //make sure the input is a filename
-    if (!argv.Contains(".txt"))
-    {
-        printf("Usage: ./makeMagic <output_filename>");
         exit(1);
     }
     // TODO: Get magin square's size from user
