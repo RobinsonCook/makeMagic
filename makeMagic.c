@@ -36,6 +36,15 @@ typedef struct
     int **msquare; // pointer to heap allocated magic square
 } MSquare;
 
+void fill(int **board)
+{ //start with 1
+    int n = 1;
+    //start with the first row
+    int i = 0;
+    //get the middle of the board
+    int j = sizeof(board) / 2;
+    printf("%d:%d:%d", j, i, n);
+}
 /* TODO:
  * Prompts the user for the magic square's size, reads it,
  * checks if it's an odd number >= 3 (if not display the required
@@ -97,15 +106,6 @@ MSquare *generateMSquare(int n)
     //fill the board with numbers
     fill(squarePtr->msquare);
     return squarePtr;
-}
-void fill(int **board)
-{ //start with 1
-    int n = 1;
-    //start with the first row
-    int i = 0;
-    //get the middle of the board
-    int j = sizeof(board) / 2;
-    printf("%d:%d:%d", j, i, n);
 }
 
 /* TODO:  
