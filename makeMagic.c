@@ -40,7 +40,8 @@ typedef struct
 void fillRecur(int **board, int size, int n, int i, int j)
 {
     n++;
-    if(n>size){
+    if (n > size)
+    {
         printf("done");
         exit(1);
     }
@@ -85,6 +86,7 @@ void fillRecur(int **board, int size, int n, int i, int j)
         {
             iB = i + 1;
         }
+        printf("found empty spot, filling now\n");
         fillRecur(board, size, n, iB, j);
     }
 }
