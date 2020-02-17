@@ -177,7 +177,7 @@ MSquare *generateMSquare(int n)
     {
         for (int j = 0; j < n; j++)
         {
-            *(*(square + i) + j);
+            printf("%d", *(*(square + i) + j));
         } /* code */
     }
 
