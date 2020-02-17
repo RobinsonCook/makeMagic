@@ -49,16 +49,13 @@ void printSquare(int **square, int size, FILE *squareFile)
             if (j != size - 1)
             {
                 fprintf(squareFile, "%d,", *(*(square + i) + j));
-           
             }
             else
             {
                 fprintf(squareFile, "%d", *(*(square + i) + j));
-      
             }
         }
         fprintf(squareFile, "\n");
-        printf("\n");
     }
 }
 void fillRecur(int **square, int size, int n, int i, int j)
@@ -66,7 +63,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
     n++;
     if (n > size * size)
     {
- 
+
         return;
     }
 
@@ -79,7 +76,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
     //set y coordinate
     if (i == 0)
     {
-   
+
         iNE = size - 1;
     }
     else
@@ -108,7 +105,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
         //see if i needs to wrap
         if (i == size - 1)
         {
-   
+
             iB = 0;
         }
         else
@@ -185,56 +182,54 @@ MSquare *generateMSquare(int n)
         }
         else
         {
-            printf("square: %d\n ", *(*(square + i)));
         }
+
+        //create the square struct
+        MSquare Square = {n, square};
+        //get a pointer to the square struct
+        MSquare *squarePtr = &Square;
+        //fill the square with numbers
+        fill(squarePtr->msquare, squarePtr->size);
+
+        return squarePtr;
     }
 
-    //create the square struct
-    MSquare Square = {n, square};
-    //get a pointer to the square struct
-    MSquare *squarePtr = &Square;
-    //fill the square with numbers
-    fill(squarePtr->msquare, squarePtr->size);
-
-    return squarePtr;
-}
-
-/* TODO:  
+    /* TODO:  
  * Opens a new file (or overwrites the existing file)
  * and writes the square in the specified format.
  *
  * msquare the magic square to output
  * filename the name of the output file
  */
-void outputMSquare(MSquare *msquare, char *filename)
-{
-    //open the file
-    FILE *squareFile = fopen(filename, "w");
-    //write square to the file
-    printSquare(msquare->msquare, msquare->size, squareFile);
-    //close the file
-}
+    void outputMSquare(MSquare * msquare, char *filename)
+    {
+        //open the file
+        FILE *squareFile = fopen(filename, "w");
+        //write square to the file
+        printSquare(msquare->msquare, msquare->size, squareFile);
+        //close the file
+    }
 
-/* TODO:
+    /* TODO:
  * Generates a magic square of the user specified size and
  * output the quare to the output filename
  */
-int main(int argc, char *argv[])
-{
-    // TODO: Check input arguments to get output filename
-    //make sure the correct number of arguments are entered
-    if (argc != 2)
+    int main(int argc, char *argv[])
     {
-        printf("Usage: ./makeMagic <output_filename>\n");
-        exit(1);
+        // TODO: Check input arguments to get output filename
+        //make sure the correct number of arguments are entered
+        if (argc != 2)
+        {
+            printf("Usage: ./makeMagic <output_filename>\n");
+            exit(1);
+        }
+
+        // TODO: Get magin square's size from user
+        int size = getSize();
+        // TODO: Generate the magic square
+        MSquare *msquare = generateMSquare(size);
+        outputMSquare(msquare, *(argv + 1));
+
+        // TODO: Output the magic square
+        return 0;
     }
-
-    // TODO: Get magin square's size from user
-    int size = getSize();
-    // TODO: Generate the magic square
-    MSquare *msquare = generateMSquare(size);
-    outputMSquare(msquare, *(argv + 1));
-
-    // TODO: Output the magic square
-    return 0;
-}
