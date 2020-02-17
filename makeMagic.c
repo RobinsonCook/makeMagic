@@ -101,16 +101,11 @@ void fillRecur(int **square, int size, int n, int i, int j)
 }
 void fill(int **square, int size)
 { //start with 1
-    int n = 1;
+    int n = 0;
     //start with the first row
     int i = 0;
     //get the middle of the square
     int j = size / 2;
-
-    printf("found empty spot, filling now\n");
-    *(*(square + i) + j) = n;
-    printf("%d", *(*(square + i) + j));
-    printSquare(square);
     //fill the next cell in the square
     fillRecur(square, size, n, i, j);
 }
