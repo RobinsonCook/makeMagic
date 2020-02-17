@@ -43,7 +43,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
     if (n > size * size)
     {
         printf("done\n");
-        exit(1);
+        return;
     }
     printf("found empty spot, filling now\n");
     *(*(square + i) + j) = n;
