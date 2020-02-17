@@ -58,7 +58,7 @@ void fillRecur(int **square, int size, int n, int i, int j)
     printf("found empty spot, filling now\n");
     *(*(square + i) + j) = n;
 
-    printSquare(square);
+    printSquare(square,size);
     int iNE = j;
     int jNE = i;
     int iB = i;
