@@ -56,6 +56,7 @@ void printSquare(int **square, int size, FILE *squareFile)
             }
         }
         fprintf(squareFile, "\n");
+        printf("\n");
     }
 }
 void fillRecur(int **square, int size, int n, int i, int j)
@@ -182,18 +183,20 @@ MSquare *generateMSquare(int n)
         }
         else
         {
+            printf("square: %d\n ", *(*(square + i)));
         }
-
-        //create the square struct
-        MSquare Square = {n, square};
-        //get a pointer to the square struct
-        MSquare *squarePtr = &Square;
-        //fill the square with numbers
-        fill(squarePtr->msquare, squarePtr->size);
-
-        return squarePtr;
     }
+
+    //create the square struct
+    MSquare Square = {n, square};
+    //get a pointer to the square struct
+    MSquare *squarePtr = &Square;
+    //fill the square with numbers
+    fill(squarePtr->msquare, squarePtr->size);
+
+    return squarePtr;
 }
+
 /* TODO:  
  * Opens a new file (or overwrites the existing file)
  * and writes the square in the specified format.
